@@ -30,4 +30,9 @@ RSpec.describe 'hiking trip show page', type: :feature do
 
     expect(page).to have_content("Average trail length: #{@peaked_mountain.trails.average(:length)}")
   end
+  it 'can display the longest trail on the trip' do
+    visit "/trips/#{@peaked_mountain.id}"
+
+    expect(page).to have_content("Longest Trail on Trip: #{@peaked_mountain.trails.order(:length).last.name}")
+  end
 end
