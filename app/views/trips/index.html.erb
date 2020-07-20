@@ -1,4 +1,4 @@
 <h1>All Trips</h1>
 <% @trips.each do |trip| %>
-<h3><%= trip.name %></h3>
+<h3><%= link_to "#{trip.name}", "/trips/#{trip.id}" %></h3>
 <% end %>
