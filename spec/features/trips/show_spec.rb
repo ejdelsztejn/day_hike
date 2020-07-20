@@ -5,7 +5,7 @@ RSpec.describe 'hiking trip show page', type: :feature do
     @peaked_mountain = Trip.create!(name: "Peaked Mountain", start_date: '2020-07-17', end_date: '2020-07-17')
     @tantiusques = Trip.create!(name: "Tantiusques", start_date: '2020-07-18', end_date: '2020-07-18')
     @lunder_pond_loop = Trail.create!(length: 1, name: "Lunden Pond Loop", address: "43 Butler Road")
-    @miller_forest_loop = Trail.create!(length: 2, name: "Miller Forest Trail", address: "43 Butler Road")
+    @miller_forest_loop = Trail.create!(length: 2, name: "Miller Forest Loop", address: "43 Butler Road")
     TripTrail.create!(trip: @peaked_mountain, trail: @lunder_pond_loop)
     TripTrail.create!(trip: @peaked_mountain, trail: @miller_forest_loop)
     TripTrail.create!(trip: @tantiusques, trail: @miller_forest_loop)
@@ -39,5 +39,14 @@ RSpec.describe 'hiking trip show page', type: :feature do
     visit "/trips/#{@peaked_mountain.id}"
 
     expect(page).to have_content("Shortest Trail on Trip: #{@peaked_mountain.trails.order(:length).first.name}")
+  end
+  it 'can link to a unique page for each trail' do
+    visit "/trips/#{@peaked_mountain.id}"
+
+    expect(page).to have_link("Miller Forest Loop")
+
+    click_on "Miller Forest Loop"
+
+    expect(current_path).to eq("/trails/#{@miller_forest_loop.id}")
   end
 end

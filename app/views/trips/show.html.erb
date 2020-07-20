@@ -6,7 +6,7 @@
 <br>
 <h3>Trails</h3>
 <% @trip.trails.each do |trail| %>
-<h4>Trail name: <%= trail.name %></h4>
+<h4>Trail name: <%= link_to "#{trail.name}", "/trails/#{trail.id}" %></h4>
 <p>Address: <%= trail.address %></p>
 <p>Length: <%= trail.length %></p>
 <% end %>
