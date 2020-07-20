@@ -22,7 +22,12 @@ RSpec.describe 'hiking trip show page', type: :feature do
   end
   it 'can display the total hiking distance of all trails' do
     visit "/trips/#{@peaked_mountain.id}"
-    save_and_open_page
+
     expect(page).to have_content("Total trail length: #{@peaked_mountain.trails.sum(:length)}")
+  end
+  it 'can display the averge hiking distance of all trails' do
+    visit "/trips/#{@peaked_mountain.id}"
+
+    expect(page).to have_content("Average trail length: #{@peaked_mountain.trails.average(:length)}")
   end
 end
