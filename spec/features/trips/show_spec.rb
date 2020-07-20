@@ -35,4 +35,9 @@ RSpec.describe 'hiking trip show page', type: :feature do
 
     expect(page).to have_content("Longest Trail on Trip: #{@peaked_mountain.trails.order(:length).last.name}")
   end
+  it 'can display the shortest trail on the trip' do
+    visit "/trips/#{@peaked_mountain.id}"
+
+    expect(page).to have_content("Shortest Trail on Trip: #{@peaked_mountain.trails.order(:length).first.name}")
+  end
 end

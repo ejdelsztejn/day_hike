@@ -2,6 +2,7 @@
 <p>Total trail length: <%= @trip.trails.sum(:length) %></p>
 <p>Average trail length: <%= @trip.trails.average(:length) %></p>
 <p>Longest Trail on Trip: <%= @trip.trails.order(:length).last.name %></p>
+<p>Shortest Trail on Trip: <%= @trip.trails.order(:length).first.name %></p>
 <br>
 <h3>Trails</h3>
 <% @trip.trails.each do |trail| %>
