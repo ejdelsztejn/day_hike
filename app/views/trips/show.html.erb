@@ -1,0 +1,8 @@
+<h1>Information about <%= @trip.name %></h1>
+<br>
+<h3>Trails</h3>
+<%= @trip.trails.each do |trail| %>
+<p><%= trail.name %></p>
+<p><%= trail.address %></p>
+<p><%= trail.length %></p>
+<% end %>
