@@ -17,6 +17,10 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+RSpec.configure do |config|
+ config.use_transactional_fixtures = true
+end
+
 DatabaseCleaner.strategy = :truncation
 
 ActiveRecord::Migration.maintain_test_schema!

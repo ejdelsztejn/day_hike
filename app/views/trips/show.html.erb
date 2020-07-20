@@ -1,8 +1,9 @@
 <h1>Information about <%= @trip.name %></h1>
+<p>Total trail length: <%= @trip.trails.sum(:length) %></p>
 <br>
 <h3>Trails</h3>
-<%= @trip.trails.each do |trail| %>
-<p><%= trail.name %></p>
-<p><%= trail.address %></p>
-<p><%= trail.length %></p>
+<% @trip.trails.each do |trail| %>
+<h4>Trail name: <%= trail.name %></h4>
+<p>Address: <%= trail.address %></p>
+<p>Length: <%= trail.length %></p>
 <% end %>
