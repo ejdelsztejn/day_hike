@@ -1,5 +1,6 @@
 <h1>Information about <%= @trail.name %></h1>
 <h3>Address: <%= @trail.address %></h3>
+<h3>Part of <%= @trail.trips.count %> trips</h3>
 <br>
 <h4><%= @trail.name %> is part of the following trips:</h4>
 <% @trail.trips.each do |trip| %>

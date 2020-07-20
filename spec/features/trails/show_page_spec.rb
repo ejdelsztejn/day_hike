@@ -20,4 +20,9 @@ RSpec.describe 'trail show page', type: :feature do
      expect(page).to have_content(@tantiusques.name)
      expect(page).to have_content(@tantiusques.trails.sum(:length))
   end
+  it 'can display the total number of trips the trail is apart of' do
+    visit "/trails/#{@miller_forest_loop.id}"
+
+    expect(page).to have_content("Part of #{@miller_forest_loop.trips.count} trips")
+  end
 end
